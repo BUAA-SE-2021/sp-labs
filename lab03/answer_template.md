@@ -24,7 +24,7 @@
 
 描述发生了什么(截图)
 
-![pipe](img/rm.jpg)
+![rm](img/rm.jpg)
 
 为什么
 
@@ -32,7 +32,7 @@
 
 描述发生了什么(截图)
 
-![pipe](img/more.jpg)
+![more](img/more.jpg)
 
 为什么
 
@@ -80,7 +80,7 @@ AC截图：
 
 AC截图：
 
-![lc193](img/fig.jpg)
+![lc195](img/fig.jpg)
 
 ## Q7 语法
 
