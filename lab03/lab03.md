@@ -173,7 +173,7 @@ read filename
 if [[ -f $filename && -s $filename ]]; then
     echo "$filename 文件存在且不为空"
 else
-    echo "$filename 文较不存在或为空"
+    echo "$filename 文件不存在或为空"
 fi
 echo
 #======================
@@ -251,15 +251,14 @@ helloworld 1 2 3
 
 # 一个综合一些的例子
 f[1]=1
-f[2]=1
 function fib () {
     for ((i = $1; i < $2; i++)); do
     if (( i > 6 && i > 8)); then
         break
     fi
-    ((f[i] = f[i-1] + f[i-2]))
-    # f[i]=$((${f[i-1]}+${f[i-2]}))
-    # f[i]=`expr ${f[i-1]} + ${f[i-2]}`
+    ((f[i] ++ ))
+    # f[i]=$((${f[i]}+1))
+    # f[i]=`expr ${f[i]} + 1`
     # 这三种方式都可以进行赋值，但expr的方法不推荐(lint会报错)
     echo ${f[i]}
 done
@@ -273,8 +272,14 @@ exit 0  # 脚本成功退出
 
 ## 实验习题
 
-1. 解释以下命令`bash test && cat a.txt || cat b.txt >f1 <f2 2>&1`'若命令执行到最后一个 `cat b.txt`,`f1`中的内容为`b.txt`的内容还是`f2`的内容
-2. 编写一个 Shell 脚本计算斐波那契数列，第 17 个值，禁止打表输出。
-3. 完成[LeetCode: 193. Valid Phone Numbers](https://leetcode-cn.com/problems/valid-phone-numbers/)，给出你的代码和 AC 截图。(体会`grep -E`, `grep -P`, `egrep`, `awk`等的差异)
-4. 完成[LeetCode: 195. Tenth Line](https://leetcode.com/problems/valid-phone-numbers/)，给出你的代码和 AC 截图。(提示：[怎么读取每一行](http://blog.sina.com.cn/s/blog_605f5b4f0101b0sd.html))
-5. 完成一个简单的交互设计，根据用户输入输出对应内容，具体交互内容随意，要求至少用上`select`，`case`和`read`。
+- 请写出命令`who | wc -l`的结果并分析其执行过程。
+- 假如在脚本的第一行放入`#!/bin/rm`或者在普通文本文件中第一行放置`#!/bin/more`，然后将文件设为可执行权限执行，看看会发生什么，并解释为什么。
+- 解释以下命令`sh test && cat a.txt || cat b.txt >f1 <f2 2>&1`'若命令执行到最后一个 `cat b.txt`,`f1`中的内容为`b.txt`的内容还是`f2`的内容
+- 编写一个 Shell 脚本计算斐波那契数列，第 17 个值，禁止打表输出。
+- 完成[LeetCode: 193. Valid Phone Numbers](https://leetcode-cn.com/problems/valid-phone-numbers/)，给出你的代码和 AC 截图。(体会`grep -E`, `grep -P`, `egrep`, `awk`等的差异)
+- 完成[LeetCode: 195. Tenth Line](https://leetcode.com/problems/valid-phone-numbers/)，给出你的代码和 AC 截图。(提示：[怎么读取每一行](http://blog.sina.com.cn/s/blog_605f5b4f0101b0sd.html))
+- 完成一个简单的交互设计，根据用户输入输出对应内容，具体交互内容随意，要求至少用上`select`，`case`和`read`。
+- 编写Shell脚本`addowner.sh`将某目录下面所有的文件名后面加上文件所有者的名字。比如`a.txt`和`file`的所有者都为owner，文件名修改后分别为`a[owner].txt`和`file[owner]`。
+  - 使用用法：`./addowner 目录名称`。（保证有目录名称这一参数）
+  - 对于子目录，名称不变。
+  - （提示：为了测试效果，请通过`useradd`创建若干用户，并可通过`chown`改变文件的所有者。另外，网上的答案是错的。）
