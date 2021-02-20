@@ -98,53 +98,7 @@ Linux 下存在多种格式的压缩文件，其压缩和解压命令如下：
 
 - 先把包通过某些命令下载到本地，再在本地运行安装程序。经常使用的是`wget`命令，格式为`wget [选项] [URL地址]`，可从指定的`URL`下载文件，还可以实现断点续传等功能，详细请看[wget 命令详解](https://www.cnblogs.com/sx66/p/11887022.html)。
 
-### 3.2. Linux 目录结构查看命令
-
-`tree`命令：将目录内容用树形表示。
-
-- 安装(Ubuntu)：
-
-  ```shell
-  $ sudo apt install tree
-  ```
-
-- Usage(常用):
-
-  ```shell
-  # ------- Listing options -------
-  -a            All files are listed. 列出所有文件
-  -d            List directories only. 仅列出目录
-  -l            Follow symbolic links like directories. 追踪符号链接
-  -f            Print the full path prefix for each file. 打印完整路径
-  -L level      Descend only level directories deep. 查看的目录深度
-  -o filename   Output to file instead of stdout. 输出文件
-  # -------- File options --------- 打印文件的其他信息
-  -p            Print the protections for each file. 权限信息(rwx)
-  -u            Displays file owner or UID number. 所有者
-  -g            Displays file group owner or GID number. 所属组
-  -s            Print the size in bytes of each file. 以字节为单位的文件大小
-  -h            Print the size in a more human readable way. 可读性更强的文件大小
-  -D            Print the date of last modification or (-c) status change. mtime/ctime
-  --inodes      Print inode number of each file. inode 编号
-  --device      Print device ID number to which each file belongs. 设备号
-  # ------- Sorting options ------- 排序标准
-  -v            Sort files alphanumerically by version. 版本号中的字母和数字
-  -t            Sort files by last modification time. mtime
-  -c            Sort files by last status change time. ctime
-  -U            Leave files unsorted. 不排序
-  -r            Reverse the order of the sort. 逆序
-  --dirsfirst   List directories before files (-U disables). 目录在前
-  --sort X      Select sort: name,version,size,mtime,ctime. 选择排序标准
-  # ------- Graphics options ------
-  -i            Do not print indentation lines. 不缩进
-  -n            Turn colorization off always (-C overrides). 关闭颜色显示
-  -C            Turn colorization on always. 不同类型的文件用不同颜色表示
-  # ---- Miscellaneous options ----
-  --version     Print version and exit. 版本号
-  --help        Print usage and this help message and exit. 帮助信息
-  ```
-
-### 3.3. vi 编辑器的使用
+### 3.2. vi 编辑器的使用
 
 - 使用 vi 打开文件：
 
@@ -272,7 +226,7 @@ vi 有三种模式：命令模式(command mode)，插入模式(insert mode)，�
 
   `Esc`清空底行或返回命令模式。
 
-### 3.4. 扩展：Tmux 的使用
+### 3.3. 扩展：Tmux 的使用
 
 Tmux 是一个终端复用器（terminal multiplexer），它将会话与窗口的"解绑"，使二者彻底分离。非常有用，属于常用的开发工具。
 
