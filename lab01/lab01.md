@@ -272,6 +272,12 @@ vi 有三种模式：命令模式(command mode)，插入模式(insert mode)，�
 
   `Esc`清空底行或返回命令模式。
 
+### 3.4. 扩展：Tmux 的使用
+
+Tmux 是一个终端复用器（terminal multiplexer），它将会话与窗口的"解绑"，使二者彻底分离。非常有用，属于常用的开发工具。
+
+详细请看：[Tmux 使用教程](http://www.ruanyifeng.com/blog/2019/10/tmux.html)
+
 ## 4. 实验习题
 
 - Linux 命令行操作，请用你学到的 Linux 命令，实现以下操作，给出每一步你的命令行截图。
