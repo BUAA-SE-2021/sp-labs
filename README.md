@@ -12,9 +12,9 @@ System Programming Labs 2021 Spring
 
 | Num  | Detail |
 | ---- | ------ |
-| 01.  |        |
+| 01.  |    基础命令 & vi 操作    |
 | 02.  |        |
-| 03.  |  Shell编程      |
+| 03.  |  权限 & Shell 编程      |
 | 04.  |        |
 | 05.  |        |
 | 06.  |        |
@@ -27,9 +27,9 @@ System Programming Labs 2021 Spring
 
 | Content              | Status    | Leader | Collaborators |
 | -------------------- | --------- | ------ | ------------- |
-| ch01: Linux基础      | preparing | 陈伟东 | 朱英豪        |
+| ch01: Linux基础      | 待发布 | 陈伟东 | 朱英豪        |
 | ch02: Linux编程环境  | preparing | 王博瑞 | 陈伟东        |
-| ch03: Shell编程      | preparing | 朱英豪 | 陈伟东        |
+| ch03: Shell编程      | 待发布 | 朱英豪 | 陈伟东        |
 | ch04: 文件I/O操作    | preparing | 王博瑞 | 朱英豪        |
 | ch05: Linux进程管理  | preparing | 邢湧喆 | 朱英豪        |
 | ch06: 信号及信号处理 | preparing | 李晓洲 | 王博瑞        |
