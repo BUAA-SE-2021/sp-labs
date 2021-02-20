@@ -2,11 +2,11 @@
 
 System Programming Labs 2021 Spring
 
-## Repo 目录说明
+## Repo 文件说明
 
-- `\lab`: 实验指导书 & 题目
-- `\answer`: 提供对应lab的`answer_template`，回答完毕后提交至云平台
-- `\feedback`: 对实验完成情况的反馈 (含答案)
+- `lab`: 实验指导书 & 题目。
+- `answer_template`: 提供对应lab的参考作答模板。建议将图片放至对应的`img/`文件夹下，使用Markdown编写，最后通过Typora转成PDF后交至云平台。
+- `feedback`: 对实验完成情况的反馈 (含答案)。
 
 ## 各次实验考察知识点
 
