@@ -232,11 +232,19 @@ Tmux 是一个终端复用器（terminal multiplexer），它将会话与窗口�
 
 详细请看：[Tmux 使用教程](http://www.ruanyifeng.com/blog/2019/10/tmux.html)
 
-## 4. 实验习题
+## 4. 实验准备
+
+- 请安装一个合适的Linux系统，你安装的Linux发行版及版本号是什么？内核版本号是什么？
+- 查看你的根目录下有哪几个子目录，每个子目录主要用来做什么用的？
+- 查看自己的ip地址，并ping一下baidu.com看网络是否连通？
+- 用软件安装命令下载build-essential。
+
+## 5. 实验操作
 
 - Linux 命令行操作，请用你学到的 Linux 命令，实现以下操作，给出每一步你的命令行截图。
-  - 请用之前提到的某个命令，从`https://github.com/BUAA-SE-2021/sp-labs/lab01.zip`处下载实验压缩包，并命名为`lab01.zip`。
-  - 解压`lab01.zip`。
+  - 用wget从`https://github.com/BUAA-SE-Compiling/natrium/releases/download/v0.1.3/natrium-linux-amd64-musl`下载
+  - 从`https://github.com/BUAA-SE-2021/sp-labs/lab01`处下载实验资料。
+  - 解压实验资料里的`lab01.zip`。
   - 进入`lab01`目录,进入子目录`etc`，打印当前路径并在当前路径下创建名为`a1`的目录，并在`a1`目录中创建名为`b1`的目录。
   - 进入`b1`目录中，创建两个文件`a.txt`，`b.txt`。
   - 退回子目录`etc`，删除目录`a1`。
