@@ -13,7 +13,7 @@ System Programming Labs 2021 Spring
 | Num  | Detail             |
 | ---- | ------------------ |
 | 01.  | 基础命令 & vi 操作 |
-| 02.  | GCC&GBD&Makefile   |
+| 02.  | GCC & GDB & Makefile   |
 | 03.  | 权限 & Shell 编程  |
 | 04.  |                    |
 | 05.  |                    |
@@ -35,4 +35,3 @@ System Programming Labs 2021 Spring
 | ch06: 信号及信号处理 | preparing | 李晓洲 | 王博瑞        |
 | ch07: 进程间通信     | preparing | 李晓洲 | 邢湧喆        |
 | ch08: 多线程编程     | preparing | 邢湧喆 | 李晓洲        |
-

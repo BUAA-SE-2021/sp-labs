@@ -6,8 +6,8 @@
 
 ## 实验准备
 
-- 请安装一个合适的Linux系统，你安装的Linux发行版及版本号是什么？内核版本号是什么？
-  
+- 请安装一个合适的 Linux 系统，你安装的 Linux 发行版及版本号是什么？内核版本号是什么？
+
   截图：
 
   答案：
@@ -18,13 +18,13 @@
 
   答案：
 
-- 查看自己的ip地址，并ping一下baidu.com看网络是否连通？
+- 查看自己的 ip 地址，并 ping 一下 baidu.com 看网络是否连通？
 
   命令：
 
   截图：
 
-- 用软件安装命令下载build-essential。
+- 用软件安装命令下载 build-essential。
 
   命令：
 
@@ -33,7 +33,7 @@
 ## 1. Linux 命令操作
 
 - Linux 命令行操作，请用你学到的 Linux 命令，实现以下操作，给出每一步你的命令行截图。
-  - 用wget从`https://github.com/BUAA-SE-Compiling/natrium/releases/download/v0.1.3/natrium-linux-amd64-musl`下载
+  - 用 wget 从`https://github.com/BUAA-SE-2021/patpat/releases/download/v0.1.3/patpat-linux-amd64`下载你们的 Linux 版 OOP 课 Java 自助评测机 patpat
   - `https://github.com/BUAA-SE-2021/sp-labs/lab01/lab01.zip`处下载实验压缩包
   - 解压`lab01.zip`。
   - 进入`lab01`目录,进入子目录`etc`，打印当前路径并在当前路径下创建名为`a1`的目录，并在`a1`目录中创建名为`b1`的目录。

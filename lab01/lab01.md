@@ -234,15 +234,15 @@ Tmux 是一个终端复用器（terminal multiplexer），它将会话与窗口�
 
 ## 4. 实验准备
 
-- 请安装一个合适的Linux系统，你安装的Linux发行版及版本号是什么？内核版本号是什么？
+- 请安装一个合适的 `Linux` 系统，你安装的 `Linux` 发行版及版本号是什么？内核版本号是什么？
 - 查看你的根目录下有哪几个子目录，每个子目录主要用来做什么用的？
-- 查看自己的ip地址，并ping一下baidu.com看网络是否连通？
-- 用软件安装命令下载build-essential。
+- 查看自己的 ip 地址，并 `ping` 一下 `baidu.com` 看网络是否连通？
+- 用软件安装命令下载 `build-essential`。
 
 ## 5. 实验操作
 
 - Linux 命令行操作，请用你学到的 Linux 命令，实现以下操作，给出每一步你的命令行截图。
-  - 用wget从`https://github.com/BUAA-SE-Compiling/natrium/releases/download/v0.1.3/natrium-linux-amd64-musl`下载
+  - 用 wget 从`https://github.com/BUAA-SE-2021/patpat/releases/download/v0.1.3/patpat-linux-amd64`下载你们的 Linux 版 OOP 课 Java 自助评测机 patpat
   - 从`https://github.com/BUAA-SE-2021/sp-labs/lab01`处下载实验资料。
   - 解压实验资料里的`lab01.zip`。
   - 进入`lab01`目录,进入子目录`etc`，打印当前路径并在当前路径下创建名为`a1`的目录，并在`a1`目录中创建名为`b1`的目录。
@@ -253,7 +253,7 @@ Tmux 是一个终端复用器（terminal multiplexer），它将会话与窗口�
   - 查看`tmp`目录下`a1009.cpp`的前十行和后十行。
   - 将`tmp`目录下的所有文件打成一个`tar`包，并命名为并命名为`tmp.tar.gz`。
   - 返回`lab01`目录，列出当前目录下的文件大小。
-  - 用命令找出lab01下的空目录并将空目录删除。
+  - 用命令找出 lab01 下的空目录并将空目录删除。
 - vi 编辑器有哪几种模式？简述这几种模式间如何互相切换？
 - 写出以下一系列操作使用的**命令**（底行模式的命令加上`:`或`/`）：
   - 用 vi 在当前用户家目录下新建文件`testfile`并打开。
