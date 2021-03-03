@@ -14,7 +14,7 @@
 - 进程是现代分时操作系统的工作单元，是操作系统向运行中的程序进行资源分配的单位。
 - 进程包括：程序代码(文本)，当前活动(程序计数器，寄存器的值)，堆栈，数据端，堆。
 
-  ![process](img/process.png)
+  ![process](img/process.jpg)
 
 - 程序与进程：程序是被动(`passive`)实体，如存储在磁盘上的可执行文件；进程是活动(`active`)实体，具有一个程序计数器用于表示下个执行命令和一组相关资源。
 - 当一个可执行文件被加载到内存时，这个程序就成为进程。
@@ -32,7 +32,7 @@
 - 可以有多个进程处于**就绪**(`ready`)或**等待**(`waiting`)状态
 - 进程状态图：
 
-  ![进程状态图](img/process_status.png)
+  ![进程状态图](img/process_status.jpg)
 
 #### PCB
 
@@ -46,11 +46,11 @@
   - 记账信息(`accounting information`)：包括 CPU 时间、实际使用时间、时间期限、记账数据、作业或进程数量等。
   - I/O 状态信息(`I/O status information`)：包括分配给进程的`I/O`设备列表、打开文件列表等。
 
-  ![PCB](img/pcb.png)
+  ![PCB](img/pcb.jpg)
 
 - 进程间的 CPU 切换：
 
-  ![进程间的CPU切换](img/cpu_switch.png)
+  ![进程间的CPU切换](img/cpu_switch.jpg)
 
 #### 进程控制
 

@@ -109,7 +109,7 @@ Linux 下存在多种格式的压缩文件，其压缩和解压命令如下：
 
 vi 有三种模式：命令模式(command mode)，插入模式(insert mode)，底行模式(last line mode)。
 
-![vi](img/vi.png)
+![vi](img/vi.jpg)
 
 - 命令模式(command mode)：使用 vi 打开文件后默认进入该模式，可以进行光标移动和文本的复制、粘贴、删除。
 
