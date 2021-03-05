@@ -14,7 +14,8 @@ System Programming Labs 2021 Spring
 | ---- | ------------------ |
 | 01.  | 基础命令 & vi 操作 |
 | 02.  | GCC & GDB & Makefile   |
-| 03.  | 权限 & Shell 编程  |
+| 03a.  | 权限 & 重定向 & 管道 |
+| 03b. |  环境变量 & Shell 编程    |
 | 04.  |                    |
 | 05.  |                    |
 | 06.  |                    |
