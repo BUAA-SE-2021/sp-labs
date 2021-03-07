@@ -1,10 +1,10 @@
-# Lab02: GCC&GBD&Makefile
+# Lab02: GCC&GDB&Makefile
 
 [TOC]
 
 ## 1. 实验目的
 
-通过使用 GCC&GBD&Makefile熟悉Linux中三种常用工具的基本操作，深入了解Linux编程环境。
+通过使用 GCC&GDB&Makefile熟悉Linux中三种常用工具的基本操作，深入了解Linux编程环境。
 
 提示：
 
