@@ -1,4 +1,4 @@
-# Lab03a Assignment
+# Lab03b Assignment
 
 > 班级：
 > 学号：
@@ -46,19 +46,7 @@
   - **不破坏除用户家目录之外的任何目录结构**，即不要在家目录之外的任何地方增删改任何文件
     **请详细叙述你的操作过程以及操作过程的截图，并给出你所编写的脚本文件的代码。**
 
-### 2.3. 数组，循环
-
-- 编写一个 Shell 脚本计算斐波那契数列，第 17 个值，禁止打表输出。
-
-```bash
-# 粘贴你的代码
-```
-
-运行结果截图：
-
-![fib](img/fig.jpg)
-
-### 2.4. 正则
+### 2.3. 正则
 
 - 完成[LeetCode: 193. Valid Phone Numbers](https://leetcode-cn.com/problems/valid-phone-numbers/)(体会`grep -E`, `grep -P`, `egrep`, `awk`等的差异)
 
@@ -70,7 +58,7 @@ AC 截图：
 
 ![lc193](img/fig.jpg)
 
-### 2.5. 文件读入
+### 2.4. 文件读入
 
 - 完成[LeetCode: 195. Tenth Line](https://leetcode.com/problems/valid-phone-numbers/)，给出你的代码和 AC 截图。(提示：[怎么读取每一行](http://blog.sina.com.cn/s/blog_605f5b4f0101b0sd.html))
 
@@ -82,7 +70,7 @@ AC 截图：
 
 ![lc195](img/fig.jpg)
 
-### 2.6. 语法
+### 2.5. 语法
 
 - 完成一个简单的交互设计，根据用户输入输出对应内容，具体交互内容随意，要求至少用上`select`，`case`和`read`。
 
@@ -94,7 +82,7 @@ AC 截图：
 
 ![inter](img/fig.jpg)
 
-### 2.7. 综合实验
+### 2.6. 综合实验
 
 - 编写 Shell 脚本`addowner.sh`将某目录下面所有的文件名后面加上文件所有者的名字。比如`a.txt`和`file`的所有者都为 owner，文件名修改后分别为`a[owner].txt`和`file[owner]`。
   - 使用用法：`./addowner 目录名称`。（若无目录名称这一参数，则默认为当前目录）
