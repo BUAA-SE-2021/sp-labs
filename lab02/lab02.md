@@ -108,7 +108,9 @@
 
 > 代码变成可执行文件，叫做[编译](http://www.ruanyifeng.com/blog/2014/11/compiler.html)（compile）；先编译这个，还是先编译那个（即编译的安排）， 叫做[构建](http://en.wikipedia.org/wiki/Software_build)（build）。[Make](<https://en.wikipedia.org/wiki/Make_(software)>)是最常用的构建工具，诞生于 1977 年，主要用于 C 语言的项目。但是实际上 ，任何只要某 个文件有变化，就要重新构建的项目，都可以用 Make 构建。
 
-- 当使用 make 构建项目时，具体的构建规则被写在一个叫做 Makefile 的文件中。本次课程的内容有了解 make 命令、了解 Makefile 文件的概念并学习 Makefile 文件的基本语法。还可以参考[阮一峰的 make 命令教程](http://www.ruanyifeng.com/blog/2015/02/make.html)
+- 当使用 make 构建项目时，具体的构建规则被写在一个叫做 Makefile 的文件中。本次课程的内容有了解 make 命令、了解 Makefile 文件的概念并学习 Makefile 文件的基本语法。还可以参考[阮一峰的 make 命令教程](http://www.ruanyifeng.com/blog/2015/02/make.html)。遇到不懂的地方可以查阅官方文档[GNU make](https://www.gnu.org/software/make/manual/make.html)。
+
+注：教材P49“vpath %.xyz” 中间不应该有'.',应为'vpath %   xyz'
 
 ## 4. 实验习题
 
@@ -222,6 +224,25 @@
 
 - Makefile 操作
 
-  解压 `make_practice.zip`，补全 Makefile 文件，要求对主模块进行编译，可删除目标文件．
+  解压 `make_practice.zip`，补全 Makefile 文件，要求对主模块进行编译，包含clean模块可删除目标文件和中间生成文件．
 
+  make_practice文件夹的目录结构如下
+  
+  ```
+  .
+  ├── include
+  │   ├── dylib.h
+  │   ├── fun1.h
+  │   └── fun2.h
+  ├── lib
+  │   └── libdylib.so
+  ├── Makefile
+  └── src
+      ├── fun1.c
+      ├── fun2.c
+      └── main.c
+  ```
+  
+  
+  
   - 综合实验，Make 工具是如何知道哪些文件需要重新生成，哪些不需要的?
