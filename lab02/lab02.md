@@ -63,8 +63,6 @@
 
   作用：使用编译优化级别 1 编译程序。级别为 1~3，级别越大优化效果越好，但编译时间越长。
 
-
-
 官方文档：[GCC, the GNU Compiler Collection](https://gcc.gnu.org/)
 
 ### 3.2. GDB 调试器的使用
@@ -114,13 +112,13 @@
 
 - 当使用 make 构建项目时，具体的构建规则被写在一个叫做 Makefile 的文件中。本次课程的内容有了解 make 命令、了解 Makefile 文件的概念并学习 Makefile 文件的基本语法。还可以参考[阮一峰的 make 命令教程](http://www.ruanyifeng.com/blog/2015/02/make.html)。遇到不懂的地方可以查阅官方文档[GNU make](https://www.gnu.org/software/make/manual/make.html)。
 
-注：教材P49“vpath %.xyz” 中间不应该有'.',应为'vpath %   xyz'
+注：教材 P49“vpath %.xyz” 中间不应该有'.',应为'vpath % xyz'
 
 ## 4. 实验习题
 
 - GCC 理解（请用命令行操作并给出截图）
 
-  - 在 linux 下创建并写入一个 c 程序文件，可以输出`hello,world!`,命名为`test.c`。
+  - 在 Linux 下创建并写入一个 C 程序文件，可以输出`hello,world!`，命名为`test.c`。
   - GCC 将一个源程序转换为可执行文件经历了哪些主要步骤？
   - 请利用`test.c`用 GCC 命令将其将其转换为可执行程序的主要过程表示出来。
 
@@ -129,7 +127,7 @@
   - 解压 lab02.zip
   - 静态库
 
-    - 使用 gcc 命令分别将`mytool1.c`和`mytool2.c`编译成.o 目标文件
+    - 使用 gcc 命令分别将`mytool1.c`和`mytool2.c` 编译成 .o 目标文件
     - 执行下面两个命令
 
       ```shell
@@ -163,7 +161,7 @@
       export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:;
       ```
 
-    - 执行./main
+    - 执行`./main`
     - 删除之前生成的动态库文件，重新执行`./main`命令，对比上一步骤得到的结果，你有什么发现？
 
   - 综合实验，你觉得静态库和动态库的区别和相同点是什么？谈谈他们的优缺点。
@@ -228,11 +226,11 @@
 
 - Makefile 操作
 
-  解压 `make_practice.zip`，补全 Makefile 文件，要求对主模块进行编译，包含clean模块可删除目标文件和中间生成文件．
+  解压 `make_practice.zip`，补全 Makefile 文件，要求对主模块进行编译，包含 clean 模块可删除目标文件和中间生成文件．
 
-  make_practice文件夹的目录结构如下
-  
-  ```
+  make_practice 文件夹的目录结构如下
+
+  ```shell
   .
   ├── include
   │   ├── dylib.h
@@ -246,7 +244,5 @@
       ├── fun2.c
       └── main.c
   ```
-  
-  
-  
+
   - 综合实验，Make 工具是如何知道哪些文件需要重新生成，哪些不需要的?

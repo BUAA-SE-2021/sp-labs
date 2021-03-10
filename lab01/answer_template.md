@@ -24,7 +24,7 @@
 
   截图：
 
-- 用软件安装命令下载 build-essential。
+- 用软件安装命令下载 `build-essential`(注：在 Ubuntu 等 Debian 系的系统中下为`build-essentian`；在 CentOS / Arch 系的系统中有类似的 package，请自行安装，为后续实验作准备)。
 
   命令：
 

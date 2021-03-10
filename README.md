@@ -24,6 +24,12 @@ System Programming Labs 2021 Spring
 | 07: 进程间通信     | preparing | 李晓洲 | 邢湧喆        |
 | 08: 多线程编程     | preparing | 邢湧喆 | 李晓洲        |
 
+课后作业安排：
+
+| Assignment          | Status    | Leader | Collaborators |
+| -------------------- | --------- | ------ | ------------- |
+| week02: Linux 编程环境 | preparing | 朱英豪 | / |
+
 ## 机房排班
 
 | 日期 | 实验内容                 | 1号机房 | 2号机房 | 3号机房 |

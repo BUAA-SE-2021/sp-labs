@@ -237,7 +237,7 @@ Tmux 是一个终端复用器（terminal multiplexer），它将会话与窗口�
 - 请安装一个合适的 `Linux` 系统，你安装的 `Linux` 发行版及版本号是什么？内核版本号是什么？
 - 查看你的根目录下有哪几个子目录，每个子目录主要用来做什么用的？
 - 查看自己的 ip 地址，并 `ping` 一下 `baidu.com` 看网络是否连通？
-- 用软件安装命令下载 `build-essential`。
+- 用软件安装命令下载 `build-essential`(注：在 Ubuntu 等 Debian 系的系统中下为`build-essentian`；在 CentOS / Arch 系的系统中有类似的 package，请自行安装，为后续实验作准备)。
 
 ## 5. 实验操作
 
