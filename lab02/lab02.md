@@ -140,27 +140,31 @@
 
       说明上述两个命令完成了什么事？
 
+    - 查看`main`文件大小，并记录
     - 执行`./main`
-    - 删除之前生成的静态库文件，重新执行`./main`命令，对比上一步骤得到的结果，你有什么发现？
+    - 删除之前生成的静态库文件，重新执行`./main`命令，对比上一步骤得到的结果，你有什么发现？并解释原因。
 
   - 动态库
 
     - 执行下面两个命令
 
       ```shell
-      gcc -shared -fPCI -o libmylib.so mytool2.o mytool1.o;
+      gcc -c -fPIC mytool2.c -o mytool2.o
+      gcc -c -fPIC mytool1.c -o mytool1.o
+      gcc -shared -o libmylib.so mytool2.o mytool1.o
       ```
 
       ```shell
       gcc -o main main.c -L. -lmylib
       ```
 
+    - 查看`main`文件大小，并和之前的作比较，解释原因。
     - 执行命令将当前目录添加到库搜索路径中
 
       ```shell
       export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:;
       ```
-
+	
     - 执行`./main`
     - 删除之前生成的动态库文件，重新执行`./main`命令，对比上一步骤得到的结果，你有什么发现？
 
