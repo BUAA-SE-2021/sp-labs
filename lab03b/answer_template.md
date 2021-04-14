@@ -4,6 +4,33 @@
 > 学号：
 > 姓名：
 
+## 0. （选做，不算分，不限语言）批量删除 IDEA 工程文件
+
+参考如下的目录结构：
+
+```shell
+./sp_java/
+├── .idea
+│   ├── .gitignore
+│   ├── misc.xml
+│   ├── modules.xml
+│   └── workspace.xml
+├── sp_java.iml
+└── src
+    ├── Test.class
+    └── Test.java
+```
+
+在当前目录下可能存在**多个**类似于如上 `sp_java` 工程的文件夹。
+
+要求批量删除**这些**文件夹中的 IDEA 工程文件，转换成如下的干净的目录结构。
+
+```shell
+./sp_java
+└── src
+    └── Test.java
+```
+
 ## 1. shebang
 
 - 假如在脚本的第一行放入`#!/bin/rm`或者在普通文本文件中第一行放置`#!/bin/more`，然后将文件设为可执行权限执行，看看会发生什么，并解释为什么。
@@ -34,7 +61,7 @@
 
 ## 3. 正则
 
-- 完成[LeetCode: 193. Valid Phone Numbers](https://leetcode-cn.com/problems/valid-phone-numbers/)(体会`grep -E`, `grep -P`, `egrep`, `awk`等的差异)
+- 完成[LeetCode: 193. Valid Phone Numbers](https://leetcode.com/problems/valid-phone-numbers/) | [leetcode-cn](https://leetcode-cn.com/problems/valid-phone-numbers/) (体会`grep -E`, `grep -P`, `egrep`, `awk`等的差异)
 
 ```bash
 # 粘贴你的代码
@@ -46,7 +73,7 @@ AC 截图：
 
 ## 4. 文件读入
 
-- 完成[LeetCode: 195. Tenth Line](https://leetcode.com/problems/valid-phone-numbers/)，给出你的代码和 AC 截图。(提示：[怎么读取每一行](http://blog.sina.com.cn/s/blog_605f5b4f0101b0sd.html))
+- 完成[LeetCode: 195. Tenth Line](https://leetcode.com/problems/tenth-line/) | [leetcode-cn](https://leetcode-cn.com/problems/tenth-line/)，给出你的代码和 AC 截图。(提示：[怎么读取每一行](http://blog.sina.com.cn/s/blog_605f5b4f0101b0sd.html))
 
 ```bash
 # 粘贴你的代码
