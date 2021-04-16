@@ -17,18 +17,12 @@ System Programming Labs 2021 Spring
 | 01: 基础命令 & vi 操作 | 已发布    | 陈伟东 | 朱英豪        |
 | 02: GCC & GDB & Makefile | 已发布 | 王博瑞 | 陈伟东        |
 | 03a: 权限 & 重定向 & 管道 & 环境变量 | 已发布    | 朱英豪 | 陈伟东        |
-| 03b: Shell 编程 | 待发布 | 朱英豪 | 陈伟东 |
+| 03b: Shell 编程 | 已发布 | 朱英豪 | 陈伟东 |
 | 04: 文件 I/O 操作  | 待发布 | 王博瑞 | 朱英豪        |
 | 05: Linux 进程管理 | preparing | 邢湧喆 | 朱英豪        |
 | 06: 信号及信号处理 | preparing | 李晓洲 | 王博瑞        |
 | 07: 进程间通信     | preparing | 李晓洲 | 邢湧喆        |
 | 08: 多线程编程     | preparing | 邢湧喆 | 李晓洲        |
-
-课后作业安排：
-
-| Assignment          | Status    | Leader | Collaborators |
-| -------------------- | --------- | ------ | ------------- |
-| week02: Linux 编程环境 | preparing | 朱英豪 | / |
 
 ## 机房排班
 
