@@ -271,6 +271,35 @@ lseek()将文件读写指针相对 whence 移动 offset 个字节。操作成功
 
 用于修改文件大小。
 
+### 处理系统调用中的错误
+
+以书上例4-14为例（书中的该代码错误已在如下程序中修正）：
+
+```c
+#include<stdio.h>
+#include<errno.h>
+#include<unistd.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+int main(void){
+    int fd;
+    fd = open("/home/zhyh/no_exist_file",O_WRONLY);
+    if(fd < 0){
+        perror("/home/zhyh/no_exist_file");
+        return 0;
+    }
+}
+```
+
+通过 `perror()`，能将在 `open` 时发生的错误打印出来，以便于调试。
+
+```shell
+zhyh@ubuntu:~/splab$ gcc -o perrortest perrortest.c 
+zhyh@ubuntu:~/splab$ ./perrortest 
+/home/zhyh/no_exist_file: No such file or directory # 打印出了错误信息：没有这个文件/目录
+```
+
 ## 实验内容
 
 1. 简述文件描述符的作用并回答问题：文件描述符和文件是一对一对应的关系吗？
