@@ -376,7 +376,7 @@ zhyh@ubuntu:~/splab$ ./perrortest
 /home/zhyh/no_exist_file: No such file or directory # 打印出了错误信息：没有这个文件/目录
 ```
 
-## 4.实验内容
+## 4 实验内容
 
 1. 简述文件描述符的作用并回答问题：文件描述符和文件是一对一对应的关系吗？
 
