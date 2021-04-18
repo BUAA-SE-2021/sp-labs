@@ -333,7 +333,34 @@ chmod 775 test
 
 ![fd](./img/fd2.png)
 
+#### 处理系统调用中的错误
 
+以书上例4-14为例（书中的该代码错误已在如下程序中修正）：
+
+```c
+#include<stdio.h>
+#include<errno.h>
+#include<unistd.h>
+#include<sys/types.h>
+#include<sys/stat.h>
+#include<fcntl.h>
+int main(void){
+    int fd;
+    fd = open("/home/zhyh/no_exist_file",O_WRONLY);
+    if(fd < 0){
+        perror("/home/zhyh/no_exist_file");
+        return 0;
+    }
+}
+```
+
+通过 `perror()`，能将在 `open` 时发生的错误打印出来，以便于调试。
+
+```shell
+zhyh@ubuntu:~/splab$ gcc -o perrortest perrortest.c 
+zhyh@ubuntu:~/splab$ ./perrortest 
+/home/zhyh/no_exist_file: No such file or directory # 打印出了错误信息：没有这个文件/目录
+```
 
 ## 4.实验内容
 
@@ -360,9 +387,8 @@ chmod 775 test
    ./write
    ./write
    ```
-
-   book.dat文件数据的变化情况是什么？给出原因，给出必要的截图。
-
+book.dat文件数据的变化情况是什么？给出原因，给出必要的截图。
+   
 5. 创建文件`~/srcfile`，使用 `ln` 命令创建 `srcfile` 的软链接文件 `~/softlink` ，给出使用的命令；使用 `ls -l` 查看 `~` ，观察 `softlink` 的文件大小，并解释为什么；使用 `ln` 命令创建 `srcfile`的硬链接文件 `~/hardlink` ，给出使用的命令；使用 `ls -l` 观察 `srcfile` 硬链接数的变化。
 
 6. 创建一个文件，内容为你的姓名的全拼（如张三同学，文件中的内容即为`zhangsan`)。编写 c 语言程序实现以下功能：首先打开该文件并输出文件的内容，之后将文件的内容修改为`May the force be with you, ${姓名全拼}!`，比如`May the force be with you, zhangsan!`，输出修改后文件的内容，最后关闭文件。**要求使用到`fopen()` `fread()` `fwrite()` `fclose()`函数**。请详细叙述你的操作过程以及操作过程的截图，并给出你所编写的 C 程序的代码。
