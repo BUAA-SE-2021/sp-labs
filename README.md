@@ -18,7 +18,7 @@ System Programming Labs 2021 Spring
 | 02: GCC & GDB & Makefile | 已发布 | 王博瑞 | 陈伟东        |
 | 03a: 权限 & 重定向 & 管道 & 环境变量 | 已发布    | 朱英豪 | 陈伟东        |
 | 03b: Shell 编程 | 已发布 | 朱英豪 | 陈伟东 |
-| 04: 文件 I/O 操作  | 待发布 | 王博瑞 | 朱英豪        |
+| 04: 文件 I/O 操作  | 已发布 | 王博瑞 | 朱英豪        |
 | 05: Linux 进程管理 | preparing | 邢湧喆 | 朱英豪        |
 | 06: 信号及信号处理 | preparing | 李晓洲 | 王博瑞        |
 | 07: 进程间通信     | preparing | 李晓洲 | 邢湧喆        |
