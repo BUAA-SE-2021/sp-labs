@@ -181,7 +181,7 @@ void test3(int fd){
 
 测试结果: 子进程仍然无法对新的 fd 上锁，说明 dup 会把锁也 dup 了
 
-```
+```plain
 /*
  * 2021-4-11, Linux, test3
  * 父进程   子进程        测试结果
