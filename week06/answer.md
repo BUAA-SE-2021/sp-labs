@@ -12,97 +12,35 @@ LINUX 有四种基本文件系统类型：普通文件、目录文件、连接�
 
 ## 2. 简述标准文件 I/O 和系统调用 I/O 的各自优缺点是什么？
 
-`stdio`的东西在不同的操作系统上实现不同，在 Linux 上是对`unistd`的高度封装，而在 Windows 上就是调用`win32`的 API，
-但总之`stdio`是跨平台通用的，而且底层还有缓冲区 buffer 优化。`unistd`的只能在 Linux 上用，里面的 IO 是基于 system-call 来实现的，
-而且调用起来没有`stdio`那样那么安全。但是由于种种原因在网络编程里面还是用的`unistd`的多一些:
-在读写设备时通常是不希望有缓冲的，例如向代表网络设备的文件写数据就是希望数据通过网络设备发送出去，而不希望只写到缓冲区里就算完事儿了，当网络设备接收到数据时应用程序也希望第一时间被通知到，所以网络编程通常直接调用 Unbuffered I/O 函数。
-open、read、write、close 等系统函数称为无缓冲 I/O(Unbuffered I/O)函数，因为它们位于 C 标准库的 I/O 缓冲区的底层。
-用 Unbuffered I/O 函数每次读写都要进内核，调一个系统调用比调一个用户空间的函数要 慢很多，所以在用户空间开辟 I/O 缓冲区还是必要的，用 C 标准 I/O 库函数就比较方便，省 去了自己管理 I/O 缓冲区的麻烦。
-用 C 标准 I/O 库函数要时刻注意 I/O 缓冲区和实际文件有可能不一致，在必要时需调 用 fflush(3)。
+- 系统调用 I/O 读写文件时，每次操作都会执行相关系统调用，这样处理的好处是直接读写实际文件，坏处是频繁地系统调用会增加系统开销
+- 标准文件 I/O 可以看成是在文件 I/O 的基础上封装了缓冲机制，先读写缓冲区，必要时再访问实际文件出，从而减少系统调用的次数
 
 ## 3. 符号链接和硬链接的异同点是什么？
 
-硬链接：由于 linux 下的文件是通过索引节点（Inode）来识别文件，硬链接可以认为是一个指针，指向文件索引节点的指针，系统并不为它重新分配 inode。每添加一个一个硬链接，文件的链接数就加 1。
-尽管硬链接节省空间，也是 Linux 系统整合文件系统的传统方式，但是存在一下不足之处：（1）不可以在不同文件系统的文件间建立链接（2）只有超级用户才可以为目录创建硬链接。
-软链接克服了硬链接的不足，没有任何文件系统的限制，任何用户可以创建指向目录的符号链接。因而现在更为广泛使用，它具有更大的灵活性，甚至可以跨越不同机器、不同网络对文件进行链接。如果给 ln 命令加上- s 选项，则建立软链接。如果[链接名]已经存在但不是目录，将不做链接。[链接名]可以是任何一个文件名（可包含路径），也可以是一个目录，并且允许它与“目标”不在同一个文件系统中。如果[链接名]是一个已经存在的目录，系统将在该目录下建立一个或多个与“目标”同名的文件，此新建的文件实际上是指向原“目标”的符号链接文件。 
-软链接与硬链接，区别不仅仅是在概念上，在实现上也是不同的。区别：硬链接原文件＆链接文件公用一个 inode 号，说明他们是同一个文件，而软链接原文件＆链接文件拥有不同的 inode 号，表明他们是两个不同的文件；在文件属性上软链接明确写出了是链接文件，而硬链接没有写出来，因为在本质上硬链接文件和原文件是完全平等关系；链接数目是不一样的，软链接的链接数目不会增加；文件大小是不一样的，硬链接文件显示的大小是跟原文件是一样的，这用强调，因为是等同的嘛，而这里软链接显示的大小与原文件就不同了。总之，建立软链接就是建立了一个新文件。当访问链接文件时，系统就会发现他是个链接文件，它读取链接文件找到真正要访问的文件。
+- 含义不同：符号链接是一类特殊的文件，其包含有一条以绝对路径或相对路径的形式指向其它文件或者目录的引用；硬链接是一个文件的一个或多个文件名
+- 删除文件性质不同：
+  - 在对符号链接进行读写时，系统会自动把该操作转换为对源文件的操作，但删除链接文件时，系统仅仅删除链接文件，而不删除源文件本身；如果目标文件被移动、重命名或删除，任何指向它的符号链接仍然存在，但会指向一个不复存在的文件
+  - 而移动或删除原始文件时，硬链接不会被破坏，因为它所引用的是文件的物理数据
+- 硬链接的文件不需要用户有访问原始文件的权限，也不会显示原始文件的位置
 
 ## 4. 查看权限
 
-假设目前系统的 umask 为 0022，执行`CREATE("a.txt", 765)`代码后，请写出文件`a.txt`所有者、组用户及其他用户对该文件的权限。
-我电脑上没有 create 函数，我用 open 函数来代替 create。
+假设目前系统的 umask 为 0022，执行`CREAT("a.txt", 765)`代码后，请写出文件`a.txt`所有者、组用户及其他用户对该文件的权限。
 
-```c
- ls
-open.c
- cat open.c
-# include <fcntl.h>
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
+![fig](img\right.png)
 
-/*
- S_IRWXU  00700 user (file owner) has read, write, and execute permission
- S_IRUSR  00400 user has read permission
- S_IWUSR  00200 user has write permission
- S_IXUSR  00100 user has execute permission
+所有者：不能读、能写、能执行。111
 
- S_IRWXG  00070 group has read, write, and execute permission
- S_IRGRP  00040 group has read permission
- S_IWGRP  00020 group has write permission
- S_IXGRP  00010 group has execute permission
+组用户：能读、不能写、不能执行。100
 
- S_IRWXO  00007 others have read, write, and execute permission
- S_IROTH  00004 others have read permission
- S_IWOTH  00002 others have write permission
- S_IXOTH  00001 others have execute permission
- */
-
-
-int main(){
-    //int fd = open(const char* path, int flags, [int mode]);
-    int fd = open("file.txt", O_RDWR | O_CREAT | O_TRUNC, S_IRWXU | S_IRGRP | S_IWGRP | S_IROTH | S_IXOTH); //mode=765
-        //一定要用man给出的宏不要自己写什么777，不要自己写什么数字
-        //如果umask是022,也就是000,020,020
-        //那么765&~022=(421,420,401)-(000,020,020)=(421,400,401)=745
-    close(fd);
-    return 0;
-}
- umask
-000
- gcc open.c
- ./a.out
- la
-总用量 24K
--rwxrwxrwx 1 zky zky  17K 4月   8 16:19 a.out
--rwxrw-r-x 1 zky zky    0 4月   8 16:19 file.txt
--rw-r--r-- 1 zky zky 1.2K 4月   8 16:17 open.c
- echo 确实是765
-确实是765
- echo 然后现在我改umask
-然后现在我改umask
- umask 022
- umask
-022
- rf a.out
- rf file.txt
- gcc open.c
- ./a.out
- la
-总用量 24K
--rwxr-xr-x 1 zky zky  17K 4月   8 16:20 a.out
--rwxr--r-x 1 zky zky    0 4月   8 16:20 file.txt
--rw-r--r-- 1 zky zky 1.2K 4月   8 16:17 open.c
- echo 发现是745
-发现是745
-
-```
+其他用户：能读、不能写、不能执行。101
 
 ## 5. 文件锁的使用
 
 关于文件锁的使用，当某进程对某个文件上了读取锁或者写入锁后，请就下面几种情况分别编写程序进行分析，并解释原因。
 
 (1,2) 创建子进程，请问子进程对该文件是否拥有同样的锁？该进程执行 exec 调用，请问该进程对文件的锁是否依然有效？
+
 我先引用 man 页面的原话如下:
 
 > Record locks are not inherited by a child created via fork(2), but are preserved across an execve(2).
@@ -110,6 +48,7 @@ int main(){
 > exec 调用，可以理解为还是父进程。
 
 首先我要先介绍一下我对`fcntl`这个复杂的函数的封装。
+
 我在`kaiyan.h`里面将 fcntl 函数封装成了四个函数:
 
 ```c
@@ -204,7 +143,7 @@ void test2(int fd){
 
 上面的测试给出:
 
-```
+```plain
 /*
  * 2021-4-11, Linux, test2
  * 父进程          子进程   测试结果
@@ -257,7 +196,9 @@ void test3(int fd){
 ---
 
 (4) 假设该进程对某个文件加了读取锁/写入锁，然后又同时对该进程进行写入/读取操作，将会发生什么情况？
+
 用`F_SETLK`等等设置的锁是建议性的"Advisory record locking"，意思是如果你遵循良好的编程习惯，你那么大概率能帮助你解决锁冲突的问题，但是你仍然可以进行写入和读取操作。
+
 Linux 号称自己能实现内核级别的"强制锁(Mandatory locking)"，也就是说能从内核底层上自动识别危险的`read`和`write`操作，这涉及到`O_NONBLOCK`选项。
 
 > If the O_NONBLOCK flag is not enabled, then the system call is blocked until the lock is removed or converted to a mode that is compatible with the access. If the O_NONBLOCK flag is enabled, then the system call fails with the error EAGAIN...
@@ -271,6 +212,7 @@ Linux 号称自己能实现内核级别的"强制锁(Mandatory locking)"，也�
 ---
 
 题外话:
+
 下面是我测试的脚本全部内容:
 
 ```c
