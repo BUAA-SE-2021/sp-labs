@@ -14,11 +14,11 @@
 
 ```bash
 # 粘贴你的代码，附上注释表明目的(可截图)
-groupadd myproject  #创建组
-useradd A -G myproject  #创建用户A并加入组
-useradd B -G myproject  #创建用户B并加入组
-chown A:myproject ahome/  #改变目录所有者为A及它的组
-chmod 770 ahome/  #修改权限，使得A拥有所有权限，和A同组的成员也拥有所有权限，其他用户无任何权限。
+groupadd myproject  # 创建组
+useradd A -G myproject  # 创建用户A并加入组
+useradd B -G myproject  # 创建用户B并加入组
+chown A:myproject ahome/  # 改变目录所有者为A及它的组
+chmod 770 ahome/  # 修改权限，使得A拥有所有权限，和A同组的成员也拥有所有权限，其他用户无任何权限。
 ```
 
 验证如下：
