@@ -31,7 +31,7 @@
 
 可以使用`kill -l`命令查看当前系统支持的所有信号：
 
-![image-signal](.\img\signal.png)
+![image-signal](/img/signal.png)
 
 信号值小于SIGRTMIN（<=34）的信号都是不可靠信号。它的主要问题是信号可能丢失。 信号值位于SIGRTMIN和SIGRTMAX之间的信号都是可靠信号，这些信号支持排队，不会丢失。
 
