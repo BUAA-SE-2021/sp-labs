@@ -120,7 +120,7 @@
 
 
 
-​       具体可以参考https://man7.org/linux/man-pages/man3/sigqueue.3.html和https://man7.org/linux/man-pages/man2/sigaction.2.html。
+​       具体可以参考https://man7.org/linux/man-pages/man3/sigqueue.3.html 和 https://man7.org/linux/man-pages/man2/sigaction.2.html。
 
 #### 2.2信号的捕捉
 
@@ -188,7 +188,7 @@ int sigprocmask(int how,const sigset_t* set,sigset_t* oldset);
    >
    > ./A processB_PID sigvalue  //第一个参数表示进程B的PID，第二个参数为伴随信号的附加数据(int值即可)。
 
-4. 请实现这样一个程序：程序每间隔1秒输出你的学号，当按下ctrl+c后，程序询问是否退出程序（此时停止输出学号），输入Y或5秒未进行任何输入则退出程序，输入N程序恢复运行，继续输出学号（提示：alarm()函数和SIGALRM信号可用作超时处理）。
+4. 请实现这样一个程序：程序每间隔1秒输出你的学号，当按下ctrl+c后，程序询问是否退出程序（此时停止输出学号），输入Y或5秒未进行任何输入则退出程序，输入N程序恢复运行，继续输出学号（提示：alarm()函数设置超时时间，SIGALRM信号处理函数作为超时处理）。
 
 5. 请实现这样一个程序：在程序中创建一个子进程，通过信号实现父子进程交替输出，父进程输出学号，子进程输出姓名，要求父进程先输出。
 
@@ -220,4 +220,15 @@ int sigprocmask(int how,const sigset_t* set,sigset_t* oldset);
 
       
 
-   2. 由于printf()函数使用全局缓冲区，因此它不是异步信号安全函数。为了避免可能发生的问题，其中一个解决方法是在调用printf()函数前阻塞所有信号，并在调用后恢复。请用上述思路实现printf()的异步信号安全版本（提示：sigprocmask()函数）。
+   2. 由于printf()函数使用全局缓冲区，因此它不是异步信号安全函数。为了避免可能发生的问题，其中一个解决方法是在调用printf()函数前阻塞所有信号，并在调用后恢复。请用上述思路补全代码，实现printf()的异步信号安全版本，无需实现格式化输出（提示：sigprocmask()函数可用于阻塞多个信号）。
+   
+      ```c
+      void print_safe()
+      {
+          //TODO:阻塞所有信号
+          printf("safe print!\n")
+          //TODO:恢复所有信号
+      }
+      ```
+   
+      
