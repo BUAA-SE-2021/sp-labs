@@ -174,7 +174,64 @@ int sigprocmask(int how,const sigset_t* set,sigset_t* oldset);
 //how=SIG_SETMASK：mask=set
 ```
 
+#### 2.4定时信号
 
+Linux下的alarm()函数可以用来设置闹钟，该函数的原型为：
+
+```c
+#include<unistd.h>
+unsigned int alarm(unsigned int seconds);
+//第一个参数seconds用来指明时间，经过seconds秒后发送SIGALRM信号给当前进程，当参数为0则取消之前的闹钟
+```
+
+返回值：
+
+- 如果本次调用前已有正在运行的闹钟，alarm()函数返回前一个闹钟的剩余秒数
+- 如果本次调用前无正在运行的闹钟，alarm()函数返回0
+
+
+
+Linux系统中sleep()函数内部使用nanosleep()函数实现，该函数与信号无关；而其他系统中可能使用alarm()和pause()函数实现，此时不应该混用alarm()和sleep()。
+
+#### 2.5计时器
+
+Linux下的setitimer()和getitimer()系统调用可以用于访问和设置计时器，计时器在初次经过设定的时间后发出信号，也可以设置为每间隔相同的时间发出信号，该函数的原型为：
+
+```c
+#include <sys/time.h>
+
+int getitimer(int which, struct itimerval *curr_value);
+int setitimer(int which, const struct itimerval *restrict new_value,
+                     struct itimerval *restrict old_value);
+```
+
+通过指定which参数，可以设置不同的计时器，不同的计时器触发后也会发出不同的信号，一个进程同时只能有一种计时器：
+
+- ITIMER_REAL：真实计时器，计算程序运行的真实时间（墙钟时间），产生SIGALRM信号
+- ITIMER_VIRTUAL：虚拟计时器，计算当前进程处于用户态的cpu时间，产生SIGVTALRM信号
+- ITIMER_PROF：使用计时器，计算当前进程处于用户态和内核态的cpu时间，产生SIGPROF信号
+
+计时器的值有以下结构体定义：
+
+```c
+struct itimerval { 
+	struct timeval it_interval; //定期触发的间隔
+	struct timeval it_value; //初次触发时间
+}; 
+
+struct timeval { 
+	time_t tv_sec; //秒
+	suseconds_t tv_usec; //微秒
+};
+```
+
+若new_value.it_value的两个字段不全为0，则定时器初次将会在设定的时间后触发；若new_value.it_value的两个字段全为0，则计时器不工作。
+
+若new_value.it_interval的两个字段不全为0，则定时器将会在初次触发后按设定的时间间隔触发；若new_value.it_interval的两个字段全为0，则计时器仅初次触发一次。
+
+
+
+setitimer()函数和alarm()函数共享同一个计时器，因此不应同时使用。
 
 ## 四、实验习题
 
