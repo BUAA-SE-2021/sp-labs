@@ -64,7 +64,7 @@ export STUDENT_ID=19373075
 ```c
 #include <stdlib.h>
 int main() {
- 	printf("STUDENT_ID:%s\n",getenv("STUDENT_ID"));
- 	return 0;
+    printf("STUDENT_ID:%s\n",getenv("STUDENT_ID"));
+    return 0;
 }
 ```
