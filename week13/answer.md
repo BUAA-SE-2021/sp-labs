@@ -2,7 +2,7 @@
 
 ## 1. 简述信号量的作用，如何利用信号量实现同步和互斥？
 
-- 作用：信号量是用来解决进程间的同步与互斥问题的一种进程间通信机制，包括一个称为信号量的变量和在该信号量下等待资源的进程等待队列，以及对信号量进行的两个原子操作（P/V操作）。
+- 作用：信号量是用来解决进程间的同步与互斥问题的一种进程间通信机制，包括一个称为信号量的变量和在该信号量下等待资源的进程等待队列，以及对信号量进行的两个原子操作（P/V 操作）。
 - 同步：由一个无条件执行的进程开始，信号量资源初始值为 0，进程结束时 V(S)操作，信号量资源+1，此时
   通知别的进程。需要该资源的进程，打破阻塞，P(S)操作，去访问临界资源。
 - 互斥：P(S)操作，资源-1，则其余进程不可再访问该临界资源。V(S)操作结束后，资源+1，此时别的进程才可
@@ -129,3 +129,81 @@ int main(){
 ![fig](img/jbw_res.png)
 
 可以通过其他进程实现数据传输，比如使用共享内存的方法，一个进程将文件里的内容放入共享内存中，另一个进程从共享内容中读取内容并输入到目标文件中。
+
+周海涛答案：
+
+写入管道：
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/stat.h>
+#include<sys/types.h>
+#include<errno.h>
+#include<fcntl.h>
+
+#define N 32
+#define FIFOPATH "/home/oem/Desktop/Code/ripe"
+
+int main(int argc, const char *argv[]){
+    int fd_fifo,fd_src,ret;       //
+    char buf[N] = {};
+
+    if(mkfifo(FIFOPATH,0666) != 0)
+        if(errno != EEXIST){
+            perror("fail to mkfifo");
+            return -1;
+        }
+
+    fd_src = open(argv[1],O_RDONLY);
+    fd_fifo = open(FIFOPATH,O_WRONLY);
+
+    while(1){
+        ret = read(fd_src,buf,N);
+        if(ret == 0)    break;
+        write(fd_fifo,buf,ret);
+    }
+    close(fd_fifo);
+    close(fd_src);
+    return 0;
+}
+```
+
+从管道中读取：
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+#include<unistd.h>
+#include<sys/stat.h>
+#include<sys/types.h>
+#include<errno.h>
+#include<fcntl.h>
+
+#define N 32
+#define FIFOPATH "/home/oem/Desktop/Code/ripe"
+
+int main(int argc, const char *argv[]){
+    int fd_fifo,fd_dest,ret;
+    char buf[128];
+
+    if(mkfifo(FIFOPATH,0666) != 0)
+        if(errno != EEXIST){
+            perror("fail to mkfifo");
+            return -1;
+        }
+
+    fd_fifo = open(FIFOPATH, O_RDONLY);
+    fd_dest = open("out.txt", O_WRONLY|O_CREAT|O_TRUNC, 0666);
+
+    while(1){
+        ret = read(fd_fifo,buf,N);
+        if(ret == 0)    break;
+        write(fd_dest,buf,ret);
+    }
+    close(fd_fifo);
+    close(fd_dest);
+    return 0;
+}
+```
