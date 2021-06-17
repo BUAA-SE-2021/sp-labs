@@ -66,36 +66,36 @@
 
 1. 请判断下面的函数是否是异步信号安全函数，如果是请说明理由，如果不是请给出一种可能发生问题的情况。
 
-```c
-int tmp;
-void swap1(int* x, int* y)
-{
+   ```c
+   int tmp;
+   void swap1(int* x, int* y)
+   {
       tmp = *x;
       *x = *y;
       *y = tmp;
-}
-```
+   }
+   ```
 
-```c
-void swap2(int* x, int* y)
-{
+   ```c
+   void swap2(int* x, int* y)
+   {
       int tmp;
       tmp = *x;
       *x = *y;
       *y = tmp;
-}
-```
+   }
+   ```
 
 2. 由于 printf()函数使用全局缓冲区，因此它不是异步信号安全函数。为了避免可能发生的问题，其中一个解决方法是在调用 printf()函数前阻塞所有信号，并在调用后恢复。请用上述思路补全代码，实现 printf()的异步信号安全版本，无需实现格式化输出（提示：sigprocmask()函数可用于阻塞多个信号）。
 
-```c
-//code
-void print_safe()
-{
-      //TODO:阻塞所有信号
-      printf("safe print!\n")
-      //TODO:恢复所有信号
-}
-```
+   ```c
+   //code
+   void print_safe()
+   {
+       //TODO:阻塞所有信号
+       printf("safe print!\n")
+       //TODO:恢复所有信号
+   }
+   ```
 
 ## 8. 实验感想
