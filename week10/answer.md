@@ -31,10 +31,8 @@ int main() {
 
 ## 2. 简述什么是可靠信号和不可靠信号，并实验 SIGINT 信号是可靠的还是不可靠的
 
-- 可靠信号：同时有多个信号时，可能有信号的丢失
-- 不可靠信号：克服了信号丢失的问题（利⽤队列机制）
-
-SIGINT 信号不可靠。
+- 可靠信号：多个信号发送到进程时，没来得及处理的信号排入进程的队列，依次处理；
+- 不可靠信号：多个信号产生时，无法来得及处理，造成信号丢失。
 
 ![fig](img/2021-06-17-20-21-44.png)
 
@@ -73,11 +71,34 @@ void sig_Handler(int signum, siginfo_t* info, void* mask) {
 }
 ```
 
+黄泽桓答案：
+
+信号值小于 SIGRTMIN=31 为不可靠信号，在 SIGRTMIN-SIGRTMAX=63 之间的为可靠信号。
+
+![fig](img/2021-06-17-20-28-04.png)
+
 ## 3. 在执行 `ping http://www.people.com.cn` 时，假设该网站是可 ping 通的，但是在输入^\时，ping 命令并没有结束而是显示 ping 的成功率，但是输入^C 时，ping 程序却被退出，请解释发生这一现象的原因
 
 ![fig](img/2021-06-17-20-23-21.png)
 
 推测原因是 ping 命令实现过程中重写了对于 ^\ ^C 信号的处理
+
+黄泽桓答案：
+
+ping的中断处理模块：
+
+```c
+set_signal(SIGINT, finish);
+void finish(void){...}
+```
+
+ping的SIGQUIT模块：
+
+```c
+set_signal(SIGQUIT, sigstatus);
+```
+
+在ping模块中，两个信号处理的函数不同，SIGINT中断，SIGQUIT显示成功率。
 
 ## 4. 编写程序实现如下功能：程序 A.c 按照用户输入的参数定时向程序 B.c 发送信号，B.c 程序接收到该信号后，打印输出一条消息
 
